@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .bearing(314)
                 .build();
         this.googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        this.googleMap.getUiSettings().setTiltGesturesEnabled(true);
 
         this.googleMap.setOnMyLocationButtonClickListener(this);
         enableMyLocation();
