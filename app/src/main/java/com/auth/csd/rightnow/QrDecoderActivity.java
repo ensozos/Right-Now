@@ -32,6 +32,7 @@ public class QrDecoderActivity extends Activity implements QRCodeReaderView.OnQR
     @Override
     public void onQRCodeRead(String text, PointF[] points) {
         Toast.makeText(this,text,Toast.LENGTH_LONG).show();
+        qrCodeReaderView.setQRDecodingEnabled(false);
     }
 
     @Override
