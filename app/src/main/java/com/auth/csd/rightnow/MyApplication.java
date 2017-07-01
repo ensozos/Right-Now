@@ -2,6 +2,7 @@ package com.auth.csd.rightnow;
 
 import android.app.Application;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
