@@ -1,6 +1,7 @@
 package com.auth.csd.rightnow;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -9,6 +10,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.auth.csd.rightnow.utils.PermissionUtils;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -116,6 +119,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             // Permission was not granted, display error dialog.
             showMissingPermissionError();
             mPermissionDenied = false;
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_quest_list:
+                Intent questListIntent = new Intent(this, QuestListActivity.class);
+                startActivity(questListIntent);
+                return true;
+
+            case R.id.action_qr_scanner:
+                Intent qrDecoderIntent = new Intent(this, QrDecoderActivity.class);
+                startActivity(qrDecoderIntent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 

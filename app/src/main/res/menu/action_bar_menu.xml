@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_quest_list"
+        android:icon="@drawable/ic_history_white_48dp"
+        android:title="Show Quest Log"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_qr_scanner"
+        android:icon="@drawable/ic_filter_center_focus_white_48dp"
+        android:title="Scan QR Code"
+        app:showAsAction="ifRoom"/>
+</menu>

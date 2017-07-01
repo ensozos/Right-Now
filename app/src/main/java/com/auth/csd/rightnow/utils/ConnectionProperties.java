@@ -10,6 +10,7 @@ public class ConnectionProperties {
 
     private static final String login = "/user/login";
     private static final String register = "/user/register";
+    private static final String questList = "/user/quest/taken";
 
     public static String getLoginUrl() {
         return url + login;
@@ -19,4 +20,7 @@ public class ConnectionProperties {
         return url + register;
     }
 
+    public static String getUserQuestTakenUrl() {
+        return url + questList;
+    }
 }
