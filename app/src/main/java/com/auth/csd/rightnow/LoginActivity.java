@@ -13,6 +13,9 @@ import com.android.volley.VolleyError;
 import com.auth.csd.rightnow.controller.GsonRequest;
 import com.auth.csd.rightnow.utils.ConnectionProperties;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText viewUsernameField;
@@ -28,6 +31,9 @@ public class LoginActivity extends AppCompatActivity {
         viewUsernameField = (EditText) findViewById(R.id.username_field);
         viewPasswordField = (EditText) findViewById(R.id.password_field);
 
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", ); //TODO 
+
         GsonRequest<String> request = new GsonRequest<String>(Request.Method.POST, ConnectionProperties.getLoginUrl(), String.class, null, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -39,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 //TODO
 
             }
-        }, true);
+        },headers ,true);
         MyApplication.getInstance().addToRequestQueue(request);
 
     }
