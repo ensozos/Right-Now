@@ -26,7 +26,7 @@
             android:value="@string/google_maps_key" />
 
 
-        <activity android:name=".view.QrDecoderActivity">
+        <activity android:name=".view.LoginActivity">
              <intent-filter>
                  <action android:name="android.intent.action.MAIN" />
                  <category android:name="android.intent.category.LAUNCHER" />
@@ -35,8 +35,8 @@
 
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".view.QuestActivity"></activity>
-        <!--<activity android:name=".view.QrDecoderActivity"></activity>-->
         <activity android:name=".view.QuestListActivity"></activity>
+        <activity android:name=".view.QrDecoderActivity"></activity>
     </application>
 
 </manifest>
