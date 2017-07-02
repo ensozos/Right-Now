@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.auth.csd.rightnow.utils.PermissionUtils;
+import com.auth.csd.rightnow.view.QrDecoderActivity;
+import com.auth.csd.rightnow.view.QuestListActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

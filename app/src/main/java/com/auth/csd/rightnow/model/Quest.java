@@ -1,7 +1,4 @@
-package com.auth.csd.rightnow;
-
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
+package com.auth.csd.rightnow.model;
 
 import java.util.Date;
 import java.util.Random;

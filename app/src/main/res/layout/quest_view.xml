@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+
+        <TextView
+            android:id="@+id/tv_questTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Quest Title"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/question_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_questTitle"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/border"
+            android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/tv_questQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question"
+                android:textSize="15dp"
+                android:textStyle="italic" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_questTitle"
+            android:layout_marginLeft="15dp"
+            android:background="@android:color/background_light"
+            android:text="@string/quest_type"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/et_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question_layout"
+            android:layout_marginTop="10dp"
+            android:hint="Answer"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/b_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_answer"
+            android:text="@string/send"
+            />
+
+    </RelativeLayout>
+
+</ScrollView>
