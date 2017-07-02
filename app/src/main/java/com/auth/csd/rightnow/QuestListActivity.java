@@ -54,49 +54,56 @@ public class QuestListActivity extends AppCompatActivity {
     }
 
     private void fillListWithContent() {
-//        StringRequest request = new StringRequest(Request.Method.GET,
-//                ConnectionProperties.getUserQuestTakenUrl(),
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Log.i("VOLLEY", response);
-//                        QuestListActivity.this.viewProgressBar.setVisibility(View.INVISIBLE);
-//
-//                        try {
-//                            JSONObject jsonResponse = new JSONObject(response);
-//                        } catch (JSONException e) {
-//                            QuestListActivity.this.alert("Error", "Invalid response from server");
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.i("VOLLEY", "ERROR " + error.getMessage());
-//                QuestListActivity.this.viewProgressBar.setVisibility(View.INVISIBLE);
-//
-//                QuestListActivity.this.alert("Error", "Server responsed with error");
-//            }
-//        }) {
-//
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/x-www-form-urlencoded; charset=UTF-8";
-//            }
-//
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> postData = new HashMap<String, String>();
-//                postData.put("sid", "random_string"); // TODO
-//                return postData;
-//            }
-//
-//            @Override
-//            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-//                return super.parseNetworkResponse(response);
-//            }
-//        };
-//
-//        MyApplication.getInstance().addToRequestQueue(request);
+        StringRequest request = new StringRequest(Request.Method.GET,
+                ConnectionProperties.getUserQuestTakenUrl(),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i("VOLLEY", response);
+                        QuestListActivity.this.viewProgressBar.setVisibility(View.INVISIBLE);
+
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+
+                            if (jsonResponse.getBoolean("error")) {
+                                QuestListActivity.this.alert("Error", jsonResponse.getString("response_msg"));
+                                return;
+                            }
+
+
+                        } catch (JSONException e) {
+                            QuestListActivity.this.alert("Error", "Invalid response from server");
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i("VOLLEY", "ERROR " + error.getMessage());
+                QuestListActivity.this.viewProgressBar.setVisibility(View.INVISIBLE);
+
+                QuestListActivity.this.alert("Error", "Server responsed with error");
+            }
+        }) {
+
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> postData = new HashMap<String, String>();
+                postData.put("sid", "random_string"); // TODO
+                return postData;
+            }
+
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                return super.parseNetworkResponse(response);
+            }
+        };
+
+        MyApplication.getInstance().addToRequestQueue(request);
 
         // dumb content
         ArrayList<Quest> quests = new ArrayList<>();

@@ -5,6 +5,9 @@ package com.auth.csd.rightnow.utils;
  */
 
 public class ConnectionProperties {
+    public static final String LOGIN_USERNAME_FIELD = "username";
+    public static final String LOGIN_PASSWORD_FIELD = "pass";
+    public static final String LOGIN_PLATFORM_FIELD = "platform";
 
     private static final String url = "http://207.154.237.186:4444";
 

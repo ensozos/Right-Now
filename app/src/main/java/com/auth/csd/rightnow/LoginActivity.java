@@ -30,6 +30,8 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     public static final String PREFS_FILE = "app_prefs";
     public static final String REMEMBER_USERNAME_KEY = "remember_username";
+    public static final String SSID_KEY = "user.ssid";
+    public static final String PLATFORM_VALUE = "android_app_v0.1";
 
     private EditText viewUsernameField;
     private EditText viewPasswordField;
@@ -72,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
+                            SharedPreferences.Editor editor = sharedPref.edit();
 
                             if (jsonResponse.getBoolean("error")) {
                                 LoginActivity.this.alert("Error", jsonResponse.getString("response_msg"));
@@ -79,13 +82,20 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                             if (LoginActivity.this.viewRememberUsername.isChecked()) {
-                                SharedPreferences.Editor editor = sharedPref.edit();
                                 editor.putString(REMEMBER_USERNAME_KEY, username);
-                                editor.commit();
+                                editor.apply();
                             }
 
-//                            String sid = jsonResponse.getString("sid");
-                            String sid = "some_random_string";
+                            if (!jsonResponse.has("ssid")) {
+                                LoginActivity.this.alert("Error", "No session id received");
+                                return;
+                            }
+
+                            String ssid = jsonResponse.getString("ssid");
+                            editor.putString(SSID_KEY, ssid);
+                            editor.apply();
+
+                            mainIntent.putExtra(SSID_KEY, ssid);
                             startActivity(mainIntent);
                         } catch (JSONException e) {
                             LoginActivity.this.alert("Error", "Invalid response from server");
@@ -109,8 +119,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> postData = new HashMap<String, String>();
-                postData.put("username", username);
-                postData.put("pass", password);
+                postData.put(ConnectionProperties.LOGIN_USERNAME_FIELD, username);
+                postData.put(ConnectionProperties.LOGIN_PASSWORD_FIELD, password);
+                postData.put(ConnectionProperties.LOGIN_PLATFORM_FIELD, PLATFORM_VALUE);
+//                postData.put("qrssid", "Huux6uuNwlVqaLLWFER1x8fA"); TODO renew
+
                 return postData;
             }
 
