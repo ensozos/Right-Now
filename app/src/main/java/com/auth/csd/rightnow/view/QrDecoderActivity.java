@@ -1,10 +1,12 @@
-package com.auth.csd.rightnow;
+package com.auth.csd.rightnow.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.auth.csd.rightnow.R;
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
 
 /**
@@ -33,6 +35,8 @@ public class QrDecoderActivity extends Activity implements QRCodeReaderView.OnQR
     public void onQRCodeRead(String text, PointF[] points) {
         Toast.makeText(this,text,Toast.LENGTH_LONG).show();
         qrCodeReaderView.setQRDecodingEnabled(false);
+
+        startActivity(new Intent(this,QuestActivity.class));
     }
 
     @Override

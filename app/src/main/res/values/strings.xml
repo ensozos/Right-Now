@@ -1,6 +1,11 @@
 <resources>
+
     <string name="app_name">Right Now</string>
+    <string name="space">\u0020</string>
     <string name="location_permission_denied">Require location permision</string>
     <string name="permission_required_toast">Location permission is required for this app.</string>
     <string name="permission_rationale_location">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the map.</string>
+    <string name="question">Mr Brown was killed on Sunday afternoon. The wife said she was reading a book. The butler said He was taking a shower. The chef said he was making breakfast. The maid said she was folding clothes, and the gardener said he was planting tomatoes. Who did it?</string>
+    <string name="quest_type">\u0020\u0020\u0020Riddle\u0020\u0020\u0020</string>
+    <string name="send">Send</string>
 </resources>

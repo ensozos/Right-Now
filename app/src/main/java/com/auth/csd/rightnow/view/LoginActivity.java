@@ -1,4 +1,4 @@
-package com.auth.csd.rightnow;
+package com.auth.csd.rightnow.view;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -19,6 +19,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.auth.csd.rightnow.MainActivity;
+import com.auth.csd.rightnow.MyApplication;
+import com.auth.csd.rightnow.R;
 import com.auth.csd.rightnow.utils.ConnectionProperties;
 
 import org.json.JSONException;
@@ -87,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 //                            String sid = jsonResponse.getString("sid");
                             String sid = "some_random_string";
                             startActivity(mainIntent);
+                            finish();
                         } catch (JSONException e) {
                             LoginActivity.this.alert("Error", "Invalid response from server");
                         }
